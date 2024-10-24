@@ -260,9 +260,6 @@ fn facts() -> Vec<String> {
         ),
         String::from("To make a photocopier, simply photocopy a mirror.\n"),
         String::from("Fact: Gigabrain is very handsome.\n"),
-        String::from("Fact not found.\n"),
-        String::from("Error. Error. Error. File not found.\n"),
-        String::from("Error. Error. Error. Fact not found.\n"),
         String::from(
             "Warning, parameter corruption detec- Rats are regarded as the most handsome rodent.\n",
         ),
