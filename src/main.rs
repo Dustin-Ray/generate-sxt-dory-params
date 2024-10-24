@@ -54,34 +54,100 @@ fn main() {
 
     // Space facts to show periodically
     let space_facts = vec![
-        "The universe is expanding at the speed of a lazy snail on a Sunday afternoon.",
-        "Mars used to have water, but it gave it all away to make the best cup of tea in the galaxy.",
-        "Saturn's rings are made entirely of hula hoops that got lost during a cosmic dance-off.",
-        "The moon is actually made of cheese, but it's lactose intolerant, so no one talks about it.",
-        "Jupiter has 79 moons, all of which are just trying to avoid paying rent.",
-        "Pluto was kicked out of the planet club for not knowing the secret handshake.",
-        "The sun is powered by a giant hamster running on a wheel, and it's taking a break in about 5 billion years.",
-        "Black holes are just really grumpy stars who refuse to share their light.",
-        "Comets are space's version of snow cones, but they're always out of the good flavors.",
-        "The speed of light was once beaten by a squirrel that was really late for work.",
-        "Astronauts bring extra socks into space because space is 99% cold feet.",
-        "Aliens tried visiting Earth, but they left when they couldn't find good Wi-Fi.",
-        "There's a planet where gravity is so weak that you could win every game of jump rope—on the first jump.",
-        "Every galaxy has at least one star that thinks it's the center of the universe… and nobody corrects it.",
-        "Space smells like burnt toast, which is why astronauts always crave breakfast when they come back.",
-        "A black hole isn't actually a hole, it's just a cosmic prank where everything disappears—including your car keys.",
-        "Stars twinkle because they're constantly trying to wink at passing spaceships.",
-        "There's a parallel universe where Earth is run by cats, and they've banned all cucumbers.",
-        "The first aliens to land on Earth just wanted directions to the nearest cosmic rest stop.",
-        "Gravity is just space's way of giving you a hug, but it can get a little clingy at times.",
-        "The universe is about 13.8 minutes old. Time is just an illusion.",
-        "A day on Venus lasts 7 seconds, but only if you're wearing a hat.",
-        "There are more rubber ducks in bathtubs than stars in the universe.",
-        "Neutron stars can spin as fast as a pizza chef tossing dough—roughly 600 slices per second.",
-        "The Milky Way galaxy is 10 feet wide, but it keeps getting lost behind the couch.",
-        "A spoonful of a neutron star weighs less than a marshmallow, which is why they're popular in hot cocoa.",
-        "There are black holes with the mass of a single potato, but only on Tuesdays.",
-        "There is a giant cloud of chocolate milk in space, waiting to be stirred with a cosmic straw.",
+        String::from("The Sun is 330,330 times larger than Earth.\n"),
+        String::from("Volcano-ologists are experts in the study of volcanoes.\n"),
+        String::from(
+            "If you have trouble with simple counting, use the following mnemonic device: \n\
+one comes before two comes before 60 comes after 12 comes before \n\
+six trillion comes after 504. This will make your earlier counting difficulties\n\
+seem like no big deal.\n",
+        ),
+        String::from("The average adult body contains half a pound of salt.\n"),
+        String::from(
+            "The first person to prove that cow's milk is drinkable was very, very thirsty.\n",
+        ),
+        String::from("The atomic weight of Germanium is seven two point six four.\n"),
+        String::from(
+            "An ostrich's eye is bigger than its brain. Its brain size is 59.26 mm,\n\
+while its eye is 50.8 mm.\n",
+        ),
+        String::from("Humans can survive underwater. But not for very long.\n"),
+        String::from("Polymerase I polypeptide A is a human gene. Shortened as POLR1C.\n"),
+        String::from("Iguanas can stay underwater for twenty-eight point seven minutes.\n"),
+        String::from("The moon orbits the Earth every 27.32 days.\n"),
+        String::from("The billionth digit of Pi is 9.\n"),
+        String::from("A gallon of water weighs 8.34 pounds.\n"),
+        String::from("Hot water freezes quicker than cold water.\n"),
+        String::from("Honey does not spoil. Instead, it will crystalize.\n"),
+        String::from("A nanosecond lasts one billionth of a second.\n"),
+        String::from(
+            "According to Norse legend, thunder god Thor's chariot was pulled across the\n\
+sky by two goats.\n",
+        ),
+        String::from(
+            "Tungsten has the highest melting point of any metal, at 3,410 degrees Celsius.\n",
+        ),
+        String::from(
+            "The value of Pi is the ratio of any circle's circumference to its diameter in\n\
+Euclidean space.\n",
+        ),
+        String::from(
+            "In 1879, Sandford Fleming first proposed the adoption of worldwide\n\
+standardized time zones at the Royal Canadian Institute.\n",
+        ),
+        String::from(
+            "89% of magic tricks are not magic. Technically, they are sorcery.\n\
+The other 11% of magic tricks are probably also not magic.\n",
+        ),
+        String::from(
+            "The plural of surgeon general is surgeons general. The past tense of\n\
+surgeons general is surgeonsed general.\n",
+        ),
+        String::from(
+            "Edmund Hillary, the first person to climb Mount Everest,\n\
+did so accidentally while chasing a bird.\n",
+        ),
+        String::from(
+            "Diamonds are made when coal is put under intense pressure. Diamonds put under\n\
+intense pressure become foam pellets, commonly used today as packing material.\n",
+        ),
+        String::from(
+            "Halley's Comet can be viewed orbiting Earth every seventy-six years.\n\
+For the other seventy-five, it retreats to the heart of the sun,\n\
+where it hibernates undisturbed.\n",
+        ),
+        String::from(
+            "In Greek myth, Prometheus stole fire from the Gods and gave it to humankind.\n\
+The jewelry he kept for himself.\n",
+        ),
+        String::from(
+            "Pants were invented by sailors in the sixteenth century to avoid Poseidon's wrath.\n",
+        ),
+        String::from(
+            "William Shakespeare did not exist. His plays were masterminded in 1589 by\n\
+Francis Bacon, who used an Ouija board to conjure play-writing ghosts.\n",
+        ),
+        String::from(
+            "The automobile brake was not invented until 1895. Before this, someone had to\n\
+remain in the car at all times, driving in circles until passengers\n\
+returned from their errands.\n",
+        ),
+        String::from(
+            "Before the Wright Brothers invented the airplane, anyone wanting to fly\n\
+anywhere was required to eat 200 pounds of helium.\n",
+        ),
+        String::from(
+            "Before the invention of scrambled eggs in 1912, the typical breakfast was either\n\
+whole eggs still in the shell or scrambled rocks.\n",
+        ),
+        String::from("To make a photocopier, simply photocopy a mirror.\n"),
+        String::from("Fact: Gigabrain is very handsome.\n"),
+        String::from("Fact not found.\n"),
+        String::from("Error. Error. Error. File not found.\n"),
+        String::from("Error. Error. Error. Fact not found.\n"),
+        String::from(
+            "Warning, parameter corruption detec- Rats are regarded as the most handsome rodent.\n",
+        ),
     ];
 
     // Convert the seed string to bytes and create a seeded RNG
