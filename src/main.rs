@@ -5,7 +5,7 @@ use flate2::write::GzEncoder;
 use flate2::Compression;
 use indicatif::{ProgressBar, ProgressStyle};
 use proof_of_sql::proof_primitive::dory::{ProverSetup, PublicParameters};
-use rand::SeedableRng;
+use rand::{Rng, SeedableRng};
 use rand_chacha::ChaCha20Rng;
 use std::{
     fs::{self, File},
@@ -20,7 +20,7 @@ use tar::Builder;
 #[command(author, version, about, long_about = None)]
 struct Args {
     /// The value for `nu` (number of public parameters)
-    #[arg(short, long, default_value_t = 15)]
+    #[arg(short, long, default_value_t = 8)]
     nu: usize,
 }
 
@@ -34,7 +34,21 @@ fn estimated_file_size(nu: usize) -> f64 {
     }
 }
 
+fn print_banner() {
+    let banner = r#"
+     _____     ______   ____                             ______                  
+    / ___/_  _/_  __/  / __ \____ __________ _____ ___  / ____/__  ____          
+    \__ \| |/_// /    / /_/ / __ `/ ___/ __ `/ __ `__ \/ / __/ _ \/ __ \         
+   ___/ />  < / /    / ____/ /_/ / /  / /_/ / / / / / / /_/ /  __/ / / /         
+  /____/_/|_|/_/    /_/    \__,_/_/   \__,_/_/ /_/ /_/\____/\___/_/ /_/          
+
+  Space and Time® ParamGen v1.0
+    "#;
+    println!("{}", banner);
+}
+
 fn main() {
+    print_banner();
     // Parse command-line arguments
     let args = Args::parse();
 
@@ -83,7 +97,7 @@ fn main() {
     // Calculate and print the estimated file size
     let estimated_size_mb = estimated_file_size(args.nu);
     println!(
-        "Estimated final parameter size for nu = {:?} is {:.2} MB",
+        "  Calculated public parameter size for nu = {:?} is {:.2} MB\n",
         args.nu, estimated_size_mb
     );
 
@@ -100,7 +114,9 @@ fn main() {
     spinner.enable_steady_tick(Duration::from_millis(100));
 
     // Set initial message
-    spinner.set_message("Generating the prover setup. This may take a long time, please wait...");
+    spinner.set_message(
+        "Generating parameters for the SxT network.\nThis may take a long time, please wait...",
+    );
 
     let start_time = Instant::now();
 
@@ -108,21 +124,19 @@ fn main() {
     let spinner_clone = spinner.clone(); // Clone the spinner so we can use it in the thread
     let fact_interval = Duration::from_secs(20); // Update the message every 5 seconds
     thread::spawn(move || {
-        let mut fact_index = 0;
         while !spinner_clone.is_finished() {
-            // Loop until the spinner finishes
-            // Update the spinner message with a space fact
-            let fact = space_facts[fact_index % space_facts.len()];
+            // Generate a random index within the bounds of the space_facts vector
+            let fact_index = rand::thread_rng().gen_range(0..space_facts.len());
+            let fact = &space_facts[fact_index];
+
+            // Update the spinner message with a randomly selected space fact
             spinner_clone.set_message(format!(
-                "Generating the prover setup. This may take a long time, please wait... Did you know? {}",
+                "Generating public parameters for the SxT network. This may take a long time, please wait...\n  Did you know? {}",
                 fact
             ));
 
             // Sleep for the interval duration before updating again
             thread::sleep(fact_interval);
-
-            // Move to the next fact
-            fact_index += 1 % 28;
         }
     });
 
@@ -149,7 +163,7 @@ fn main() {
                     .unwrap(),
             );
             compression_spinner.enable_steady_tick(Duration::from_millis(100));
-            compression_spinner.set_message("Compressing...");
+            compression_spinner.set_message("Setup complete! Compressing...");
 
             // Start compression
             let tar_gz_file_path = "dory-params.tar.gz";
