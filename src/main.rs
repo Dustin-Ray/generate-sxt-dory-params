@@ -20,7 +20,7 @@ use tar::Builder;
 #[command(author, version, about, long_about = None)]
 struct Args {
     /// The value for `nu` (number of public parameters)
-    #[arg(short, long, default_value_t = 8)]
+    #[arg(short, long, default_value_t = 15)]
     nu: usize,
 }
 
