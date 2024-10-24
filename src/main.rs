@@ -1,11 +1,10 @@
 mod tests;
 
 use clap::Parser;
-use flate2::write::GzEncoder;
-use flate2::Compression;
+use flate2::{write::GzEncoder, Compression};
 use indicatif::{ProgressBar, ProgressStyle};
 use proof_of_sql::proof_primitive::dory::{ProverSetup, PublicParameters};
-use rand::{Rng, SeedableRng};
+use rand::SeedableRng;
 use rand_chacha::ChaCha20Rng;
 use std::{
     fs::{self, File},
@@ -52,8 +51,6 @@ fn main() {
     // Parse command-line arguments
     let args = Args::parse();
 
-    let space_facts = facts();
-
     // Convert the seed string to bytes and create a seeded RNG
     let seed_bytes = "SpaceAndTime"
         .bytes()
@@ -95,15 +92,8 @@ fn main() {
     let fact_interval = Duration::from_secs(20); // Update the message every 5 seconds
     thread::spawn(move || {
         while !spinner_clone.is_finished() {
-            // Generate a random index within the bounds of the space_facts vector
-            let fact_index = rand::thread_rng().gen_range(0..space_facts.len());
-            let fact = &space_facts[fact_index];
-
             // Update the spinner message with a randomly selected space fact
-            spinner_clone.set_message(format!(
-                "Generating public parameters for the SxT network. This may take a long time, please wait...\n  Did you know? {}",
-                fact
-            ));
+            spinner_clone.set_message("Generating public parameters for the SxT network. This may take a long time, please wait...\n".to_string());
 
             // Sleep for the interval duration before updating again
             thread::sleep(fact_interval);
@@ -167,102 +157,4 @@ fn main() {
         }
         Err(_) => println!("Failed to save parameters, aborting."),
     }
-}
-
-fn facts() -> Vec<String> {
-    // Space facts to show periodically
-    let space_facts = vec![
-        String::from("The Sun is 330,330 times larger than Earth.\n"),
-        String::from("Volcano-ologists are experts in the study of volcanoes.\n"),
-        String::from(
-            "If you have trouble with simple counting, use the following mnemonic device: \n\
-      one comes before two comes before 60 comes after 12 comes before \n\
-      six trillion comes after 504. This will make your earlier counting difficulties\n\
-      seem like no big deal.\n",
-        ),
-        String::from("The average adult body contains half a pound of salt.\n"),
-        String::from(
-            "The first person to prove that cow's milk is drinkable was very, very thirsty.\n",
-        ),
-        String::from("The atomic weight of Germanium is seven two point six four.\n"),
-        String::from(
-            "An ostrich's eye is bigger than its brain. Its brain size is 59.26 mm,\n\
-      while its eye is 50.8 mm.\n",
-        ),
-        String::from("Humans can survive underwater. But not for very long.\n"),
-        String::from("Polymerase I polypeptide A is a human gene. Shortened as POLR1C.\n"),
-        String::from("Iguanas can stay underwater for twenty-eight point seven minutes.\n"),
-        String::from("The moon orbits the Earth every 27.32 days.\n"),
-        String::from("The billionth digit of Pi is 9.\n"),
-        String::from("A gallon of water weighs 8.34 pounds.\n"),
-        String::from("Hot water freezes quicker than cold water.\n"),
-        String::from("Honey does not spoil. Instead, it will crystalize.\n"),
-        String::from("A nanosecond lasts one billionth of a second.\n"),
-        String::from(
-            "According to Norse legend, thunder god Thor's chariot was pulled across the\n\
-      sky by two goats.\n",
-        ),
-        String::from(
-            "Tungsten has the highest melting point of any metal, at 3,410 degrees Celsius.\n",
-        ),
-        String::from(
-            "The value of Pi is the ratio of any circle's circumference to its diameter in\n\
-      Euclidean space.\n",
-        ),
-        String::from(
-            "In 1879, Sandford Fleming first proposed the adoption of worldwide\n\
-      standardized time zones at the Royal Canadian Institute.\n",
-        ),
-        String::from(
-            "89% of magic tricks are not magic. Technically, they are sorcery.\n\
-      The other 11% of magic tricks are probably also not magic.\n",
-        ),
-        String::from(
-            "The plural of surgeon general is surgeons general. The past tense of\n\
-      surgeons general is surgeonsed general.\n",
-        ),
-        String::from(
-            "Edmund Hillary, the first person to climb Mount Everest,\n\
-      did so accidentally while chasing a bird.\n",
-        ),
-        String::from(
-            "Diamonds are made when coal is put under intense pressure. Diamonds put under\n\
-      intense pressure become foam pellets, commonly used today as packing material.\n",
-        ),
-        String::from(
-            "Halley's Comet can be viewed orbiting Earth every seventy-six years.\n\
-      For the other seventy-five, it retreats to the heart of the sun,\n\
-      where it hibernates undisturbed.\n",
-        ),
-        String::from(
-            "In Greek myth, Prometheus stole fire from the Gods and gave it to humankind.\n\
-      The jewelry he kept for himself.\n",
-        ),
-        String::from(
-            "Pants were invented by sailors in the sixteenth century to avoid Poseidon's wrath.\n",
-        ),
-        String::from(
-            "William Shakespeare did not exist. His plays were masterminded in 1589 by\n\
-      Francis Bacon, who used an Ouija board to conjure play-writing ghosts.\n",
-        ),
-        String::from(
-            "The automobile brake was not invented until 1895. Before this, someone had to\n\
-      remain in the car at all times, driving in circles until passengers\n\
-      returned from their errands.\n",
-        ),
-        String::from(
-            "Before the Wright Brothers invented the airplane, anyone wanting to fly\n\
-      anywhere was required to eat 200 pounds of helium.\n",
-        ),
-        String::from(
-            "Before the invention of scrambled eggs in 1912, the typical breakfast was either\n\
-      whole eggs still in the shell or scrambled rocks.\n",
-        ),
-        String::from("To make a photocopier, simply photocopy a mirror.\n"),
-        String::from("Fact: Gigabrain is very handsome.\n"),
-        String::from(
-            "Warning, parameter corruption detec- Rats are regarded as the most handsome rodent.\n",
-        ),
-    ];
-    space_facts
 }
