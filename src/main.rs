@@ -176,9 +176,9 @@ fn facts() -> Vec<String> {
         String::from("Volcano-ologists are experts in the study of volcanoes.\n"),
         String::from(
             "If you have trouble with simple counting, use the following mnemonic device: \n\
-    one comes before two comes before 60 comes after 12 comes before \n\
-    six trillion comes after 504. This will make your earlier counting difficulties\n\
-    seem like no big deal.\n",
+      one comes before two comes before 60 comes after 12 comes before \n\
+      six trillion comes after 504. This will make your earlier counting difficulties\n\
+      seem like no big deal.\n",
         ),
         String::from("The average adult body contains half a pound of salt.\n"),
         String::from(
@@ -187,7 +187,7 @@ fn facts() -> Vec<String> {
         String::from("The atomic weight of Germanium is seven two point six four.\n"),
         String::from(
             "An ostrich's eye is bigger than its brain. Its brain size is 59.26 mm,\n\
-    while its eye is 50.8 mm.\n",
+      while its eye is 50.8 mm.\n",
         ),
         String::from("Humans can survive underwater. But not for very long.\n"),
         String::from("Polymerase I polypeptide A is a human gene. Shortened as POLR1C.\n"),
@@ -200,63 +200,63 @@ fn facts() -> Vec<String> {
         String::from("A nanosecond lasts one billionth of a second.\n"),
         String::from(
             "According to Norse legend, thunder god Thor's chariot was pulled across the\n\
-    sky by two goats.\n",
+      sky by two goats.\n",
         ),
         String::from(
             "Tungsten has the highest melting point of any metal, at 3,410 degrees Celsius.\n",
         ),
         String::from(
             "The value of Pi is the ratio of any circle's circumference to its diameter in\n\
-    Euclidean space.\n",
+      Euclidean space.\n",
         ),
         String::from(
             "In 1879, Sandford Fleming first proposed the adoption of worldwide\n\
-    standardized time zones at the Royal Canadian Institute.\n",
+      standardized time zones at the Royal Canadian Institute.\n",
         ),
         String::from(
             "89% of magic tricks are not magic. Technically, they are sorcery.\n\
-    The other 11% of magic tricks are probably also not magic.\n",
+      The other 11% of magic tricks are probably also not magic.\n",
         ),
         String::from(
             "The plural of surgeon general is surgeons general. The past tense of\n\
-    surgeons general is surgeonsed general.\n",
+      surgeons general is surgeonsed general.\n",
         ),
         String::from(
             "Edmund Hillary, the first person to climb Mount Everest,\n\
-    did so accidentally while chasing a bird.\n",
+      did so accidentally while chasing a bird.\n",
         ),
         String::from(
             "Diamonds are made when coal is put under intense pressure. Diamonds put under\n\
-    intense pressure become foam pellets, commonly used today as packing material.\n",
+      intense pressure become foam pellets, commonly used today as packing material.\n",
         ),
         String::from(
             "Halley's Comet can be viewed orbiting Earth every seventy-six years.\n\
-    For the other seventy-five, it retreats to the heart of the sun,\n\
-    where it hibernates undisturbed.\n",
+      For the other seventy-five, it retreats to the heart of the sun,\n\
+      where it hibernates undisturbed.\n",
         ),
         String::from(
             "In Greek myth, Prometheus stole fire from the Gods and gave it to humankind.\n\
-    The jewelry he kept for himself.\n",
+      The jewelry he kept for himself.\n",
         ),
         String::from(
             "Pants were invented by sailors in the sixteenth century to avoid Poseidon's wrath.\n",
         ),
         String::from(
             "William Shakespeare did not exist. His plays were masterminded in 1589 by\n\
-    Francis Bacon, who used an Ouija board to conjure play-writing ghosts.\n",
+      Francis Bacon, who used an Ouija board to conjure play-writing ghosts.\n",
         ),
         String::from(
             "The automobile brake was not invented until 1895. Before this, someone had to\n\
-    remain in the car at all times, driving in circles until passengers\n\
-    returned from their errands.\n",
+      remain in the car at all times, driving in circles until passengers\n\
+      returned from their errands.\n",
         ),
         String::from(
             "Before the Wright Brothers invented the airplane, anyone wanting to fly\n\
-    anywhere was required to eat 200 pounds of helium.\n",
+      anywhere was required to eat 200 pounds of helium.\n",
         ),
         String::from(
             "Before the invention of scrambled eggs in 1912, the typical breakfast was either\n\
-    whole eggs still in the shell or scrambled rocks.\n",
+      whole eggs still in the shell or scrambled rocks.\n",
         ),
         String::from("To make a photocopier, simply photocopy a mirror.\n"),
         String::from("Fact: Gigabrain is very handsome.\n"),
