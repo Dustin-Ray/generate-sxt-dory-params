@@ -122,7 +122,7 @@ fn main() {
             thread::sleep(fact_interval);
 
             // Move to the next fact
-            fact_index += 1;
+            fact_index += 1 % 28;
         }
     });
 
